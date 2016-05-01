@@ -9,26 +9,26 @@ namespace movies.Model
     class Movie
     {
 
-        private String title { get; set; }
-        private int year { get; set; }
-        private String rated { get; set; }
-        private DateTime relased { get; set; }
-        private String runtime { get; set; }
-        private String genre { get; set; }
-        private String director { get; set; }
-        private String writer { get; set; }
-        private String actors { get; set; }
-        private String plot { get; set; }
-        private String language { get; set; }
-        private String country { get; set; }
-        private String awards { get; set; }
-        private String poster { get; set; }
-        private int metascore { get; set; }
-        private double imdbRating { get; set; }
-        private double imdbVotes { get; set; }
-        private String imdbId { get; set; }
-        private String type { get; set; }
-        private Boolean response { get; set; }
+        public string title { get; set; }
+        public int year { get; set; }
+        public string rated { get; set; }
+        public string relased { get; set; }
+        public string runtime { get; set; }
+        public string genre { get; set; }
+        public string director { get; set; }
+        public string writer { get; set; }
+        public string actors { get; set; }
+        public string plot { get; set; }
+        public string language { get; set; }
+        public string country { get; set; }
+        public string awards { get; set; }
+        public string poster { get; set; }
+        public int metascore { get; set; }
+        public double imdbRating { get; set; }
+        public double imdbVotes { get; set; }
+        public string imdbId { get; set; }
+        public string type { get; set; }
+        public bool response { get; set; }
 
     }
 }

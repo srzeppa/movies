@@ -1,4 +1,5 @@
-﻿using System;
+﻿using movies.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,20 +27,25 @@ namespace movies
         public MainPage()
         {
             this.InitializeComponent();
+            JsonParser.searchMovie("deadpool");
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Width = 320, Height = 320 });
+        }
+
+        public Frame AppFrame { get { return Content; } }
+
+        private void Option1Button_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Option2Button_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
-        }
-
-        private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (SearchListBoxItem.IsSelected) { ResultTextBlock.Text = "Share"; }
-            else if (FavoritesListBoxItem.IsSelected) { ResultTextBlock.Text = "Favorites"; }
-            else if (ViewedListBoxItem.IsSelected) { ResultTextBlock.Text = "Viewed"; }
-
+            NavigationPane.IsPaneOpen = !NavigationPane.IsPaneOpen;
         }
     }
 }
