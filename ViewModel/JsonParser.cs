@@ -15,14 +15,13 @@ namespace movies.ViewModel
         public async static Task<Movie> searchMovie(string title)
         {
             var http = new HttpClient();
-            string riotURL = String.Format("http://www.omdbapi.com/?t=" + title +"&y=&plot=short&r=json");
-            var response = await http.GetAsync(riotURL);
+            string url = String.Format("http://www.omdbapi.com/?t=" + title +"&y=&plot=short&r=json");
+            var response = await http.GetAsync(url);
 
             var result = await response.Content.ReadAsStringAsync();
 
-            Movie movie = new Movie();
-            movie = JsonConvert.DeserializeObject<Movie>(result);
-            System.Diagnostics.Debug.WriteLine(movie.title);
+            Movie movie = JsonConvert.DeserializeObject<Movie>(result);
+
             return movie;
         }
     }
