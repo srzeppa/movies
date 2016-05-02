@@ -29,164 +29,16 @@ namespace movies
         {
             InitializeComponent();
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Width = 320, Height = 320 });
-            InitializeHamburgerMenu();
-            trnslttrnsfrmMenuTop.X = -stckpnlMenuWidth;
-            trnslttrnsfrmMenuBottom.X = -stckpnlMenuWidth;
-            pgMainPage.ManipulationMode = ManipulationModes.TranslateX;
         }
 
-        #region "Hamburger menu"
-
-        double stckpnlMenuWidth = 210;
-        double InitialManipulationPointX;
-        bool HamburgerMenuOpen = false;
-        bool HamburgerMenuOpeningClosing = false;
-
-        private void InitializeHamburgerMenu()
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            shMenu1.From = -stckpnlMenuWidth;
-            shMenu2.From = -stckpnlMenuWidth;
-            hdMenu1.To = -stckpnlMenuWidth;
-            hdMenu2.To = -stckpnlMenuWidth;
-            stckpnlMenuTop.Width = stckpnlMenuWidth;
-            stckpnlMenuBottom.Width = stckpnlMenuWidth;
+            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
         }
 
-        private void bttnHamburgerMenu_Tapped(object sender, TappedRoutedEventArgs e)
+        private void SignInButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (HamburgerMenuOpen)
-            {
-                HideMenu();
-            }
-            else
-            {
-                ShowMenu();
-            }
+            ContentFrame.Navigate(typeof(View.SearchPage));
         }
-
-        private void MenuSearch_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            HideMenu();
-        }
-
-        private void MenuFavourites_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            HideMenu();
-        }
-
-        private void MenuPrivacy_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            HideMenu();
-        }
-
-        private void MenuTerms_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            HideMenu();
-        }
-
-        private void MenuAbout_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            HideMenu();
-        }
-
-        private void grdPageOverlay_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            HideMenu();
-        }
-
-        private async void ShowMenu()
-        {
-            grdPageOverlay.Visibility = Visibility.Visible;
-            await strbrdShowMenu.BeginAsync();
-            HamburgerMenuOpen = true;
-        }
-
-        private async void HideMenu()
-        {
-            HamburgerMenuOpen = false;
-            grdPageOverlay.Visibility = Visibility.Collapsed;
-            await strbrdHideMenu.BeginAsync();
-        }
-
-        private void pgMainPage_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
-        {
-            InitialManipulationPointX = e.Position.X;
-            HamburgerMenuOpeningClosing = HamburgerMenuOpen ? false : InitialManipulationPointX < 30 ? true : false;
-        }
-
-        private void pgMainPage_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
-        {
-
-            if (HamburgerMenuOpeningClosing || (HamburgerMenuOpen && InitialManipulationPointX > e.Position.X))
-            {
-                HamburgerMenuOpeningClosing = true;
-                if (e.Position.X < stckpnlMenuWidth + 1)
-                {
-                    Point currentpoint = e.Position;
-                    trnslttrnsfrmMenuTop.X = e.Position.X < stckpnlMenuWidth ? -stckpnlMenuWidth + e.Position.X : 0;
-                    trnslttrnsfrmMenuBottom.X = e.Position.X < stckpnlMenuWidth ? -stckpnlMenuWidth + e.Position.X : 0;
-                }
-            }
-        }
-
-        private async void pgMainPage_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-        {
-            if (HamburgerMenuOpeningClosing || (HamburgerMenuOpen && InitialManipulationPointX > e.Position.X))
-            {
-                double X = e.Position.X > stckpnlMenuWidth ? stckpnlMenuWidth : e.Position.X;
-                if (X > stckpnlMenuWidth / 2)
-                {
-                    shMenu1.From = -stckpnlMenuWidth + X;
-                    shMenu2.From = -stckpnlMenuWidth + X;
-                    await strbrdShowMenu.BeginAsync();
-                    shMenu1.From = -stckpnlMenuWidth;
-                    shMenu2.From = -stckpnlMenuWidth;
-                    grdPageOverlay.Visibility = Visibility.Visible;
-                    HamburgerMenuOpen = true;
-                }
-                else
-                {
-                    grdPageOverlay.Visibility = Visibility.Collapsed;
-                    hdMenu1.From = X - stckpnlMenuWidth;
-                    hdMenu2.From = X - stckpnlMenuWidth;
-                    await strbrdHideMenu.BeginAsync();
-                    hdMenu1.From = 0;
-                    hdMenu2.From = 0;
-                    HamburgerMenuOpen = false;
-                }
-            }
-            HamburgerMenuOpeningClosing = false;
-        }
-
-        #endregion
-    }
-
-    public static class StoryboardExtensions
-    {
-        public static Task BeginAsync(this Storyboard storyboard)
-        {
-            try
-            {
-                TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-                if (storyboard == null)
-                    tcs.SetException(new ArgumentNullException());
-                else
-                {
-                    EventHandler<object> onComplete = null;
-                    onComplete = (s, e) => {
-                        storyboard.Completed -= onComplete;
-                        tcs.SetResult(true);
-                    };
-                    storyboard.Completed += onComplete;
-                    storyboard.Begin();
-                }
-                return tcs.Task;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
     }
 }
