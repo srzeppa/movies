@@ -18,6 +18,8 @@
                 <Image x:Name="posterImage" Height="209" Width="210" Margin="0,0,0,0"/>
                 <rate:RatingsControl x:Name="Rating" BackgroundColor="White" NumberOfStars="10" StarForegroundColor="Orange" StarOutlineColor="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <TextBlock x:Name="movieTextBlock" Width="355" TextAlignment="Left" TextWrapping="Wrap" FontSize="18" />
+                <TextBlock x:Name="posterTextBlock" Width="355" TextAlignment="Left" TextWrapping="Wrap" FontSize="18"/>
+
 
             </StackPanel>
         </ScrollViewer>

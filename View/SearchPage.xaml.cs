@@ -35,13 +35,20 @@ namespace movies.View
             if (title != null || title != "")
             {
                 movie = await JsonParser.searchMovie(title);
-                if(movie.poster != null)
+                if (movie.title != null)
                 {
-                    posterImage.Source = new BitmapImage(new Uri(movie.poster));
+                    if (movie.poster != null)
+                    {
+                        posterImage.Source = new BitmapImage(new Uri(movie.poster));
+                    }
+                    movieTextBlock.Text = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer + "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
+                    posterTextBlock.Text = movie.plot;
+                    Rating.Value = movie.imdbRating;
+                    AddToFavouritesButton.Visibility = Visibility.Visible;
+                } else
+                {
+                    movieTextBlock.Text = "this movie is not in our database";
                 }
-                movieTextBlock.Text = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer +  "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
-                Rating.Value = movie.imdbRating;
-                AddToFavouritesButton.Visibility = Visibility.Visible;
             }
 
         }

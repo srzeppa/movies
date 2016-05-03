@@ -25,10 +25,14 @@ namespace movies
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             InitializeComponent();
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Width = 320, Height = 320 });
+
+            ViewModel.CreateDatabase createDatabase = new ViewModel.CreateDatabase();
+            createDatabase.createDB();
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
