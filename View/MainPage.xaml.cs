@@ -33,12 +33,18 @@ namespace movies
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
-        private void SignInButton_OnClick(object sender, RoutedEventArgs e)
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(View.SearchPage));
         }
+
+        private void FavouritesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(View.FavouritesPage));
+        }
+
     }
 }

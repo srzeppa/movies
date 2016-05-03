@@ -10,14 +10,15 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="285,47,0,0" Click="buttonSearch_Click"/>
         <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="339"/>
-        
+
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="494" Margin="0,84,0,62">
-            
-                <Image x:Name="posterImage" Height="209" Width="210" Margin="0,0,0,0"/>
-                <TextBlock x:Name="movieTextBlock" Width="400" TextAlignment="Center" TextWrapping="Wrap" FontSize="24" />
-            
+
+            <Image x:Name="posterImage" Height="209" Width="210" Margin="0,0,0,0"/>
+            <TextBlock x:Name="movieTextBlock" Width="355" TextAlignment="Center" TextWrapping="Wrap" FontSize="18" />
+
         </StackPanel>
-        
+        <Button x:Name="AddToFavouritesButton" Content="Add to favourites" HorizontalAlignment="Left" Margin="204,598,0,0" VerticalAlignment="Top" Width="146" Visibility="Collapsed" Click="AddToFavouritesButton_Click"/>
+
 
     </Grid>
 </Page>

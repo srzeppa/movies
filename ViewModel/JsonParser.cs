@@ -17,9 +17,7 @@ namespace movies.ViewModel
             var http = new HttpClient();
             string url = String.Format("http://www.omdbapi.com/?t=" + title +"&y=&plot=short&r=json");
             var response = await http.GetAsync(url);
-
             var result = await response.Content.ReadAsStringAsync();
-
             Movie movie = JsonConvert.DeserializeObject<Movie>(result);
 
             return movie;
