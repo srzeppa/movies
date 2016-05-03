@@ -40,7 +40,7 @@ namespace movies.View
                     posterImage.Source = new BitmapImage(new Uri(movie.poster));
                 }
                 movieTextBlock.Text = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer +  "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
-
+                Rating.Value = movie.imdbRating;
                 AddToFavouritesButton.Visibility = Visibility.Visible;
             }
 
