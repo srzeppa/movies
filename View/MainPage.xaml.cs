@@ -31,7 +31,7 @@ namespace movies
             InitializeComponent();
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Width = 320, Height = 320 });
 
-            ViewModel.CreateDatabase createDatabase = new ViewModel.CreateDatabase();
+            ViewModel.DatabaseHandler createDatabase = new ViewModel.DatabaseHandler();
             createDatabase.createDB();
         }
 

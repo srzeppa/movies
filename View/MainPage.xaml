@@ -28,7 +28,7 @@
         </SplitView.Pane>
         <SplitView.Content>
             <Grid>
-                <Frame x:Name="ContentFrame" />
+                <Frame x:Name="ContentFrame"/>
             </Grid>
         </SplitView.Content>
     </SplitView>

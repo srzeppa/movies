@@ -23,7 +23,7 @@
 
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="AddToFavouritesButton" Content="Add to favourites" HorizontalAlignment="Left" Margin="204,598,0,0" VerticalAlignment="Top" Width="146" Visibility="Collapsed" Click="AddToFavouritesButton_Click"/>
+        <Button x:Name="ToWatchButton" Content="To watch" HorizontalAlignment="Left" Margin="204,598,0,0" VerticalAlignment="Top" Width="146" Click="ToWatchButton_Click"/>
 
 
     </Grid>

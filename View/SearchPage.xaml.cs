@@ -23,6 +23,7 @@ namespace movies.View
 {
     public sealed partial class SearchPage : Page
     {
+        Movie movie;
         public SearchPage()
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace movies.View
         private async void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
             String title = textBoxSearch.Text;
-            Movie movie;
             if (title != null || title != "")
             {
                 movie = await JsonParser.searchMovie(title);
@@ -44,7 +44,6 @@ namespace movies.View
                     movieTextBlock.Text = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer + "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
                     posterTextBlock.Text = movie.plot;
                     Rating.Value = movie.imdbRating;
-                    AddToFavouritesButton.Visibility = Visibility.Visible;
                 } else
                 {
                     movieTextBlock.Text = "this movie is not in our database";
@@ -53,9 +52,10 @@ namespace movies.View
 
         }
 
-        private void AddToFavouritesButton_Click(object sender, RoutedEventArgs e)
+        private void ToWatchButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.DatabaseHandler insertToDatabase = new ViewModel.DatabaseHandler();
+            insertToDatabase.insert(movie.imdbId, 0, DateTime.Now);
         }
     }
 }

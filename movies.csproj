@@ -99,7 +99,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\UserMovie.cs" />
-    <Compile Include="ViewModel\CreateDatabase.cs" />
+    <Compile Include="ViewModel\DatabaseHandler.cs" />
     <Compile Include="View\FavouritesPage.xaml.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

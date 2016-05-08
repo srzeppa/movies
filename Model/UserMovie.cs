@@ -13,5 +13,6 @@ namespace movies.Model
         public int id { get; set; }
         public string imdbId { get; set; }
         public int userVote { get; set; }
+        public DateTime whereToWatch { get; set; }
     }
 }
