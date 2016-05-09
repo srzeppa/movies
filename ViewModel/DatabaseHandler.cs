@@ -35,5 +35,19 @@ namespace movies.ViewModel
          }); 
         }
 
+        public List<Model.UserMovie> getMoviesFromDatabase()
+        {
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "movies.sqlite");
+            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+            List<Model.UserMovie> userMovies = new List<Model.UserMovie>();
+            var query = conn.Table<Model.UserMovie>();
+
+            foreach (var movie in query)
+            {
+                userMovies.Add(movie);
+            }
+
+            return userMovies;
+        }
     }
 }

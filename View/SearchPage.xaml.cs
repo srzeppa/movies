@@ -34,7 +34,7 @@ namespace movies.View
             String title = textBoxSearch.Text;
             if (title != null || title != "")
             {
-                movie = await JsonParser.searchMovie(title);
+                movie = await JsonParser.getMovieByTitle(title);
                 if (movie.title != null)
                 {
                     if (movie.poster != null)

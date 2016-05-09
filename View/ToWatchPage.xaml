@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="movies.View.FavouritesPage"
+    x:Class="movies.View.ToWatchPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:movies"

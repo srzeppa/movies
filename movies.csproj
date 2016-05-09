@@ -100,7 +100,7 @@
     </Compile>
     <Compile Include="Model\UserMovie.cs" />
     <Compile Include="ViewModel\DatabaseHandler.cs" />
-    <Compile Include="View\FavouritesPage.xaml.cs" />
+    <Compile Include="View\ToWatchPage.xaml.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -130,7 +130,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\FavouritesPage.xaml">
+    <Page Include="View\ToWatchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

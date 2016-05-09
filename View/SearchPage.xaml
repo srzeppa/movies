@@ -9,8 +9,49 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="285,47,0,0" Click="buttonSearch_Click"/>
-        <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="339"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualState000min">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textBoxSearch.Width" Value="300"/>
+                        <Setter Target="textBoxSearch.Margin" Value="0,10,0,0"/>
+                        <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
+                        <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualState500min">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="500"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textBoxSearch.Width" Value="450"/>
+                        <Setter Target="textBoxSearch.Margin" Value="0,10,0,0"/>
+                        <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
+                        <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualState800min">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textBoxSearch.Width" Value="700"/>
+                        <Setter Target="textBoxSearch.Margin" Value="0,10,0,0"/>
+                        <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
+                        <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Click="buttonSearch_Click"/>
+        <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,84,0,0">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="1066">
@@ -24,7 +65,5 @@
             </StackPanel>
         </ScrollViewer>
         <Button x:Name="ToWatchButton" Content="To watch" HorizontalAlignment="Left" Margin="204,598,0,0" VerticalAlignment="Top" Width="146" Click="ToWatchButton_Click"/>
-
-
     </Grid>
 </Page>

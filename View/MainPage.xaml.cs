@@ -45,9 +45,11 @@ namespace movies
             ContentFrame.Navigate(typeof(View.SearchPage));
         }
 
-        private void FavouritesButton_Click(object sender, RoutedEventArgs e)
+        private void ToWatchButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(View.FavouritesPage));
+            ContentFrame.Navigate(typeof(View.ToWatchPage));
+
+
         }
 
     }
