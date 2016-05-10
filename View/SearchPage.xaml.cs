@@ -44,6 +44,7 @@ namespace movies.View
                     movieTextBlock.Text = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer + "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
                     posterTextBlock.Text = movie.plot;
                     Rating.Value = movie.imdbRating;
+                    ToWatchButton.Visibility = Visibility.Visible;
                 } else
                 {
                     movieTextBlock.Text = "this movie is not in our database";
@@ -54,8 +55,17 @@ namespace movies.View
 
         private void ToWatchButton_Click(object sender, RoutedEventArgs e)
         {
+            userToWatchDatePicker.Visibility = Visibility.Visible;
+        }
+
+        private void userToWatchDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            DateTime date = userToWatchDatePicker.Date.DateTime;
             ViewModel.DatabaseHandler insertToDatabase = new ViewModel.DatabaseHandler();
-            insertToDatabase.insert(movie.imdbId, 0, DateTime.Now);
+            if (date > DateTime.Now)
+            {
+                insertToDatabase.insert(movie.imdbId, 0, date);
+            }
         }
     }
 }
