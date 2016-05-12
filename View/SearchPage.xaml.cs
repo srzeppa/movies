@@ -27,6 +27,7 @@ namespace movies.View
         public SearchPage()
         {
             InitializeComponent();
+            DataContext = new MovieViewModel();
         }
 
         private async void buttonSearch_Click(object sender, RoutedEventArgs e)

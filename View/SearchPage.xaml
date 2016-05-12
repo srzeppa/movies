@@ -50,7 +50,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Click="buttonSearch_Click"/>
+        <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Command="{Binding ClickCommand}"/>
         <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,84,0,0">
