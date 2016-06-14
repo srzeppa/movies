@@ -98,8 +98,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Command\GetMovieCommand.cs" />
     <Compile Include="Model\UserMovie.cs" />
     <Compile Include="ViewModel\DatabaseHandler.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SearchMovieViewModel.cs" />
     <Compile Include="View\ToWatchPage.xaml.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

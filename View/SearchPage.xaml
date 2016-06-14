@@ -69,21 +69,21 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Click="buttonSearch_Click"/>
-        <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
+        <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Command="{Binding GetMovieCommand}"/>
+        <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Title, Mode=TwoWay}" VerticalAlignment="Top" />
 
         <ScrollViewer x:Name="scrollPanel" Margin="0,84,0,44" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
             <StackPanel x:Name="stackPanel" Margin="0,84,0,44" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Image x:Name="posterImage" Height="300" Width="210" Margin="0,0,0,0"/>
+                <Image x:Name="posterImage" Source="{ Binding Path=DisplayedPosterPath}" Height="300" Width="210" Margin="0,0,0,0"/>
                 <rate:RatingsControl x:Name="Rating" BackgroundColor="White" NumberOfStars="10" StarForegroundColor="Orange" StarOutlineColor="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                <TextBlock x:Name="movieTextBlock" TextAlignment="Left" TextWrapping="Wrap" FontSize="18" />
-                <TextBlock x:Name="posterTextBlock" TextAlignment="Left" TextWrapping="Wrap" FontSize="18"/>
+                <TextBlock x:Name="movieTextBlock" Text="{Binding Content, Mode=TwoWay}" TextAlignment="Left" TextWrapping="Wrap" FontSize="18" />
+                <TextBlock x:Name="posterTextBlock" Text="{Binding Plot, Mode=TwoWay}" TextAlignment="Left" TextWrapping="Wrap" FontSize="18"/>
                 
             </StackPanel>
         </ScrollViewer>
 
-        <DatePicker x:Name="userToWatchDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,200,0,0" Visibility="Collapsed" Header="When u want to watch this movie?" DateChanged="userToWatchDatePicker_DateChanged"/>
-        <Button x:Name="ToWatchButton" Content="To watch" HorizontalAlignment="Left" Margin="204,598,0,0" VerticalAlignment="Top" Width="146" Click="ToWatchButton_Click" Visibility="Visible"/>
+        <DatePicker x:Name="userToWatchDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,200,0,0" Visibility="Collapsed" Header="When u want to watch this movie?" />
+        <Button x:Name="ToWatchButton" Content="To watch" HorizontalAlignment="Left" Margin="204,598,0,0" VerticalAlignment="Top" Width="146" Visibility="Collapsed"/>
     </Grid>
 </Page>
