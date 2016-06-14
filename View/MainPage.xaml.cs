@@ -48,8 +48,6 @@ namespace movies
         private void ToWatchButton_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(View.ToWatchPage));
-
-
         }
 
     }

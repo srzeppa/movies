@@ -16,11 +16,17 @@
                         <AdaptiveTrigger MinWindowWidth="1"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="scrollPanel.Width" Value="300"/>
+                        <Setter Target="stackPanel.Width" Value="300"/>
+                        <Setter Target="movieTextBlock.Width" Value="300"/>
+                        <Setter Target="posterTextBlock.Width" Value="300"/>
                         <Setter Target="textBoxSearch.Width" Value="300"/>
                         <Setter Target="textBoxSearch.Margin" Value="0,10,0,0"/>
                         <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
                         <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
                         <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="ToWatchButton.Margin" Value="100,500,0,100"/>
+                        <Setter Target="ToWatchButton.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualState500min">
@@ -28,11 +34,18 @@
                         <AdaptiveTrigger MinWindowWidth="500"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="scrollPanel.Width" Value="450"/>
+                        <Setter Target="stackPanel.Width" Value="450"/>
+                        <Setter Target="movieTextBlock.Width" Value="450"/>
+                        <Setter Target="posterTextBlock.Width" Value="450"/>
+                        <Setter Target="textBoxSearch.Width" Value="450"/>
                         <Setter Target="textBoxSearch.Width" Value="450"/>
                         <Setter Target="textBoxSearch.Margin" Value="0,10,0,0"/>
                         <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
                         <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
                         <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="ToWatchButton.Margin" Value="100,500,0,100"/>
+                        <Setter Target="ToWatchButton.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualState800min">
@@ -40,11 +53,17 @@
                         <AdaptiveTrigger MinWindowWidth="800"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="scrollPanel.Width" Value="700"/>
+                        <Setter Target="stackPanel.Width" Value="700"/>
+                        <Setter Target="movieTextBlock.Width" Value="700"/>
+                        <Setter Target="posterTextBlock.Width" Value="700"/>
                         <Setter Target="textBoxSearch.Width" Value="700"/>
                         <Setter Target="textBoxSearch.Margin" Value="0,10,0,0"/>
                         <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
                         <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
                         <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="ToWatchButton.Margin" Value="100,500,0,100"/>
+                        <Setter Target="ToWatchButton.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -53,13 +72,13 @@
         <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Click="buttonSearch_Click"/>
         <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,84,0,0">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="546">
+        <ScrollViewer x:Name="scrollPanel" Margin="0,84,0,44" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+            <StackPanel x:Name="stackPanel" Margin="0,84,0,44" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Image x:Name="posterImage" Height="209" Width="210" Margin="0,0,0,0"/>
+                <Image x:Name="posterImage" Height="300" Width="210" Margin="0,0,0,0"/>
                 <rate:RatingsControl x:Name="Rating" BackgroundColor="White" NumberOfStars="10" StarForegroundColor="Orange" StarOutlineColor="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                <TextBlock x:Name="movieTextBlock" Width="355" TextAlignment="Left" TextWrapping="Wrap" FontSize="18" />
-                <TextBlock x:Name="posterTextBlock" Width="355" TextAlignment="Left" TextWrapping="Wrap" FontSize="18"/>
+                <TextBlock x:Name="movieTextBlock" TextAlignment="Left" TextWrapping="Wrap" FontSize="18" />
+                <TextBlock x:Name="posterTextBlock" TextAlignment="Left" TextWrapping="Wrap" FontSize="18"/>
                 
             </StackPanel>
         </ScrollViewer>

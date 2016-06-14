@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,10 +29,10 @@ namespace movies.ViewModel
             path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "movies.sqlite");
             conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
             var s = conn.Insert(new Model.UserMovie(){
-            imdbId = imdbId, 
-            userVote = userVote,
-            whereToWatch = whereToWatch
-         }); 
+                imdbId = imdbId, 
+                userVote = userVote,
+                whereToWatch = whereToWatch
+            }); 
         }
 
         public List<Model.UserMovie> getMoviesFromDatabase()

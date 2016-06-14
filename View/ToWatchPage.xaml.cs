@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace movies.View
@@ -29,8 +33,24 @@ namespace movies.View
             foreach (Model.UserMovie movie in listUserMovie)
             {
                 Model.Movie movieModel = await ViewModel.JsonParser.getMovieById(movie.imdbId);
-                listViewUserMovies.Items.Add(new BitmapImage(new Uri(movieModel.poster)));
+                listViewUserMovies.Items.Add(movieModel.title);
             }
+        }
+
+        private void listItemClick(object sender, SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine("dsdasdasdasdasdasdasdasdas");
+
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("edit");
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("delete");
         }
     }
 }
