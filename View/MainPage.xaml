@@ -55,10 +55,12 @@
                 </StackPanel>
             </StackPanel>
         </SplitView.Pane>
-        
+
         <SplitView.Content>
             <Grid>
-                <Frame x:Name="ContentFrame"/>
+                <Frame x:Name="ContentFrame">
+                    <Image x:Name="image" Margin="0,0,0,0" Source="http://wpjournals.com/wp-content/uploads/2013/02/Charitable-Filmaking.jpg" HorizontalAlignment="Center" Height="258" Width="258"/>
+                </Frame>
             </Grid>
         </SplitView.Content>
     </SplitView>

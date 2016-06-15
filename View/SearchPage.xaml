@@ -25,6 +25,9 @@
                         <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
                         <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
                         <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="slider.Margin" Value="0,0,0,40"/>
+                        <Setter Target="slider.HorizontalAlignment" Value="Center" />
+                        <Setter Target="slider.Width" Value="300" />
                         <Setter Target="ToWatchButton.Margin" Value="0,0,0,20"/>
                         <Setter Target="ToWatchButton.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
@@ -44,6 +47,9 @@
                         <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
                         <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
                         <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="slider.Margin" Value="0,0,0,40"/>
+                        <Setter Target="slider.HorizontalAlignment" Value="Center" />
+                        <Setter Target="slider.Width" Value="450" />
                         <Setter Target="ToWatchButton.Margin" Value="0,0,0,20"/>
                         <Setter Target="ToWatchButton.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
@@ -62,6 +68,9 @@
                         <Setter Target="textBoxSearch.HorizontalAlignment" Value="Center" />
                         <Setter Target="buttonSearch.Margin" Value="0,50,0,0"/>
                         <Setter Target="buttonSearch.HorizontalAlignment" Value="Center" />
+                        <Setter Target="slider.Margin" Value="0,0,0,40"/>
+                        <Setter Target="slider.HorizontalAlignment" Value="Center" />
+                        <Setter Target="slider.Width" Value="700" />
                         <Setter Target="ToWatchButton.Margin" Value="0,0,0,20"/>
                         <Setter Target="ToWatchButton.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
@@ -69,19 +78,21 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Button x:Name="ToWatchButton" VerticalAlignment="Bottom" Content="To watch" Width="146" Visibility="Visible" Command="{Binding ToWatchCommand}"/>
+        <Button x:Name="ToWatchButton" VerticalAlignment="Bottom" Content="Rate movie!" Width="146" Visibility="Visible" Command="{Binding ToWatchCommand}"/>
         <Button x:Name="buttonSearch" Content="Search" VerticalAlignment="Top" Command="{Binding GetMovieCommand}"/>
         <TextBox x:Name="textBoxSearch" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Title, Mode=TwoWay}" VerticalAlignment="Top" />
+        <Slider x:Name="slider" Value="{Binding Slider, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Maximum="10" Minimum="0" />
 
-        <ScrollViewer x:Name="scrollPanel" Margin="0,84,0,64" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer x:Name="scrollPanel" Margin="0,84,0,94" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
             <StackPanel x:Name="stackPanel" Margin="0,84,0,44" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Image x:Name="posterImage" Source="{ Binding Path=DisplayedPosterPath}" Height="300" Width="210" Margin="0,0,0,0"/>
-                <rate:RatingsControl x:Name="Rating" Height="20" Value="{Binding RateValue}" BackgroundColor="White" NumberOfStars="10" StarForegroundColor="Orange" StarOutlineColor="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <rate:RatingsControl x:Name="Rating" Value="{Binding RateValue}" BackgroundColor="White" NumberOfStars="10" StarForegroundColor="Orange" StarOutlineColor="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <TextBlock x:Name="movieTextBlock" Text="{Binding Content, Mode=TwoWay}" TextAlignment="Left" TextWrapping="Wrap" FontSize="18" />
                 <TextBlock x:Name="posterTextBlock" Text="{Binding Plot, Mode=TwoWay}" TextAlignment="Left" TextWrapping="Wrap" FontSize="18"/>
 
             </StackPanel>
         </ScrollViewer>
+
     </Grid>
 </Page>

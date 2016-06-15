@@ -7,8 +7,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="VisualStateGroup">
+            <VisualState x:Name="VisualState000min">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="1"/>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="listViewUserMovies.Width" Value="300"/>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="VisualState500min">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="500"/>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="listViewUserMovies.Width" Value="450"/>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="VisualState800min">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="800"/>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="listViewUserMovies.Width" Value="700"/>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="listViewUserMovies" Grid.Row="1" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="listItemClick" >
+        <ListView x:Name="listViewUserMovies" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" SelectionChanged="listItemClick" >
         </ListView>
     </Grid>
 </Page>

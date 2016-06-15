@@ -33,7 +33,7 @@ namespace movies.View
             foreach (Model.UserMovie movie in listUserMovie)
             {
                 Model.Movie movieModel = await ViewModel.JsonParser.getMovieById(movie.imdbId);
-                listViewUserMovies.Items.Add(movieModel.title);
+                listViewUserMovies.Items.Add(movieModel.title + ' ' + movie.userVote);
             }
         }
 

@@ -26,6 +26,7 @@ namespace movies.ViewModel
         private String poster;
         private String imdbId;
         private Double rateValue;
+        private int sliderValue;
         private DateTime dateTime;
 
         public String Title
@@ -118,6 +119,19 @@ namespace movies.ViewModel
             }
         }
 
+        public int Slider
+        {
+            get
+            {
+                return sliderValue;
+            }
+            set
+            {
+                sliderValue = value;
+                OnPropertyChanged("Slider");
+            }
+        }
+
         public ICommand GetMovieCommand
         {
             get
@@ -141,17 +155,30 @@ namespace movies.ViewModel
             var response = await http.GetAsync(url);
             var result = await response.Content.ReadAsStringAsync();
             Movie movie = JsonConvert.DeserializeObject<Movie>(result);
+            Debug.WriteLine(movie);
+            if(movie.imdbId == null)
+            {
+                RateValue = 0;
+                ImdbId = "";
+                Plot = "";
+                DisplayedPosterPath = "";
+                Title = "";
+                Content = "This movie isnt in our database!";
+            } else
+            {
+                BitmapImage src = new BitmapImage();
+                src.UriSource = new Uri(movie.poster);
 
-            BitmapImage src = new BitmapImage();
-            src.UriSource = new Uri(movie.poster);
+                RateValue = movie.imdbRating;
+                ImdbId = movie.imdbId;
+                Title = movie.title;
+                Plot = movie.plot;
+                DisplayedPosterPath = movie.poster;
 
-            RateValue = movie.imdbRating;
-            ImdbId = movie.imdbId;
-            Title = movie.title;
-            Plot = movie.plot;
-            DisplayedPosterPath = movie.poster;
+                Content = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer + "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
+            }
 
-            Content = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer + "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
+            
         }
 
         string path;
@@ -164,7 +191,7 @@ namespace movies.ViewModel
             var s = conn.Insert(new Model.UserMovie()
             {
                 imdbId = ImdbId,
-                userVote = 0,
+                userVote = Slider,
                 whereToWatch = Date
             });
         }
