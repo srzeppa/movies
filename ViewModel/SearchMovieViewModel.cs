@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -18,10 +19,14 @@ namespace movies.ViewModel
     class SearchMovieViewModel : MainViewModel
     {
         private Movie movie_ = null;
+        private UserMovie userMovie_ = null;
         private String titleToSearch;
         private String content;
         private String plot;
         private String poster;
+        private String imdbId;
+        private Double rateValue;
+        private DateTime dateTime;
 
         public String Title
         {
@@ -75,11 +80,57 @@ namespace movies.ViewModel
             }
         }
 
+        public DateTime Date
+        {
+            get
+            {
+                return dateTime;
+            }
+            set
+            {
+                dateTime = value;
+                OnPropertyChanged("Date");
+            }
+        }
+
+        public String ImdbId
+        {
+            get
+            {
+                return imdbId;
+            }
+            set
+            {
+                imdbId = value;
+            }
+        }
+
+        public Double RateValue
+        {
+            get
+            {
+                return rateValue;
+            }
+            set
+            {
+                rateValue = value;
+                OnPropertyChanged("RateValue");
+            }
+        }
+
         public ICommand GetMovieCommand
         {
             get
             {
                 return new GetMovieCommand(getMovieByTitle);
+            }
+        }
+
+        public ICommand ToWatchCommand
+        {
+            get
+            {
+                return new GetMovieCommand(insert);
             }
         }
 
@@ -94,11 +145,28 @@ namespace movies.ViewModel
             BitmapImage src = new BitmapImage();
             src.UriSource = new Uri(movie.poster);
 
+            RateValue = movie.imdbRating;
+            ImdbId = movie.imdbId;
             Title = movie.title;
             Plot = movie.plot;
             DisplayedPosterPath = movie.poster;
 
             Content = "Title: " + movie.title + "\r\nYear: " + movie.year + "\r\nDirector: " + movie.director + "Writer: " + movie.writer + "\r\nActors: " + movie.actors + "\r\nGenre: " + movie.genre + "\r\nCountry: " + movie.country + "\r\nLanguage: " + movie.language + "\r\nAwards: " + movie.awards;
+        }
+
+        string path;
+        SQLite.Net.SQLiteConnection conn;
+        public void insert()
+        {
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "movies.sqlite");
+            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+            Debug.WriteLine(Date);
+            var s = conn.Insert(new Model.UserMovie()
+            {
+                imdbId = ImdbId,
+                userVote = 0,
+                whereToWatch = Date
+            });
         }
 
     }
